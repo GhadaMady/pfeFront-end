@@ -1,0 +1,98 @@
+<div class="row justify-content-center align-items-center">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4><strong>{{ isEditMode ? 'Modifier' : 'Déclarer' }} une Réclamation</strong></h4>
+          <div class="card-body">
+            <form [formGroup]="reclamationForm" (ngSubmit)="saveReclamation()">
+              
+              <div class="nice-form-group">
+                <label for="titre">Titre de la Réclamation <i class="fas fa-tag"></i></label>
+                <br>
+                <input
+                  type="text"
+                  name="Titre"
+                  id="titre"
+                  formControlName="Titre"
+                  placeholder="Entrer le titre de la réclamation"
+                  class="formbold-form-input"
+                />
+                <div *ngIf="isFieldInvalid('Titre')" class="invalid-feedback">
+                  {{ getErrorMessage('Titre') }}
+                </div>
+              </div>
+  
+              <div class="nice-form-group">
+                <label for="date">Date de Réclamation <i class="fas fa-calendar-alt"></i></label>
+                <br>
+                <input
+                  type="date"
+                  name="Date"
+                  id="date"
+                  formControlName="Date"
+                  class="formbold-form-input"
+                />
+                <div *ngIf="isFieldInvalid('Date')" class="invalid-feedback">
+                  {{ getErrorMessage('Date') }}
+                </div>
+              </div>
+  
+              <div class="nice-form-group">
+                <label for="message">Description <i class="fas fa-pencil-alt"></i></label>
+                <br>
+                <textarea
+                  name="message"
+                  id="message"
+                  formControlName="message"
+                  placeholder="Entrer une description"
+                  class="formbold-form-input"
+                ></textarea>
+                <div *ngIf="isFieldInvalid('message')" class="invalid-feedback">
+                  {{ getErrorMessage('message') }}
+                </div>
+              </div>
+  
+              <div class="nice-form-group">
+                <label for="etat">État de la Réclamation <i class="fas fa-info-circle"></i></label>
+                <br>
+                <select
+                  name="Etat"
+                  id="etat"
+                  formControlName="Etat"
+                  class="formbold-form-input"
+                >
+                  <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+                </select>
+                <div *ngIf="isFieldInvalid('Etat')" class="invalid-feedback">
+                  {{ getErrorMessage('Etat') }}
+                </div>
+              </div>
+  
+              <div class="nice-form-group">
+                <label for="user">Utilisateur <i class="fas fa-user"></i></label>
+                <br>
+                <select
+                  name="User"
+                  id="user"
+                  formControlName="User"
+                  class="formbold-form-input"
+                >
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+                </select>
+                <div *ngIf="isFieldInvalid('User')" class="invalid-feedback">
+                  {{ getErrorMessage('User') }}
+                </div>
+              </div>
+  
+              <div class="text-center">
+                <button class="btn btn-success" type="submit" [disabled]="reclamationForm.invalid">
+                  {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

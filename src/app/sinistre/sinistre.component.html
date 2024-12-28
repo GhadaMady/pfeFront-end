@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <br><br>
+                <h3 class="card-title">Liste des Sinistres</h3>
+                <a href="/dashboard/sinistres/déclarer">
+                    <button class="bouton-clignotant">
+                        <strong>Ajouter un sinistre</strong>
+                    </button>
+                </a>
+                <div class="content">
+                    <br><br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center;">Nom du sinistre</th>
+                                <th scope="col" style="text-align: center;">Date de déclaration</th>
+                                <th scope="col" style="text-align: center;">État</th>
+                                <th scope="col" style="text-align: center;">Utilisateur</th>                            
+                                <th scope="col" style="text-align: center;">Contrat</th>
+                                <th scope="col" style="text-align: center;">Changement d'État</th>
+                                <th scope="col" style="text-align: center;" width="75">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ts of dataSource">
+                                <td data-label="Nom du sinistre" style="text-align: center;">{{ts.nameS}}</td>
+                                <td data-label="Date de déclaration" style="text-align: center;">{{ts.Date}}</td>
+                                <td data-label="État" style="text-align: center;">
+                                    <h5 class="mb-0 fw-normal">{{ts.Etat}}</h5>
+                                </td>
+                                <td data-label="Utilisateur" style="text-align: center;">
+                                    <h5 class="mb-0 fw-normal">{{ts.User.email}}</h5>
+                                </td>
+                                <td data-label="Contrat" style="text-align: center;">
+                                    <h5 class="mb-0 fw-normal">{{ts.Contrat.nameC}}</h5>
+                                </td>
+                                <td data-label="Etat" style="position: relative;">
+                                  
+                                    <button *ngIf="ts.Etat === 'Réglement' || ts.Etat === 'En cours' " type="button" (click)="onPutRef(ts._id)" class="btn btn-danger">
+                                       Reffuser
+                                    </button> &nbsp; 
+
+                                    <button *ngIf="ts.Etat === 'En attente' " (click)="onPutC(ts._id)" class="btn btn-danger">
+                                        En cours
+                                     </button> &nbsp;  <br>
+                                    <button *ngIf="ts.Etat === 'En cours'" type="button" (click)="onPutR(ts._id)" class="btn btn-dangr">
+                                        Réglement
+                                    </button> &nbsp;   <br>
+                                    <button *ngIf="ts.Etat === 'Réglement' || ts.Etat === 'En cours'" type="button" (click)="onPut(ts._id)" class="btn btn-success">
+                                         Valider
+                                    </button>
+                                </td>
+                                <td data-label="Action" style="text-align: center;">
+                                    <button type="button" (click)="onDelete(ts._id)" class="btn btn-danger">Supprimer</button>
+                                    <button class="bouton-Mod" (click)="onModify(ts._id)" class="btn btn-success">Modifier</button>
+                     
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<br>
+
+<div class="row">
+ <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Liste des produits</h4>
+        <a href="/dashboard/produits/ajouter">
+          <button class="bouton-clignotant">
+          <strong>Ajouter un Produit</strong>  
+          </button>
+        </a>
+		<br>
+		<br>
+		<br>
+
+        <div class="roww">
+            <div class="column" *ngFor="let ts of dataSource">
+              <div class="cardd">
+                <div class="icon-wrapper">
+                    <img src="">
+                </div>
+                <br>
+                <h2 style="text-align: center;"><strong> {{ ts.nom }}</strong></h2>
+                <br>
+                <p><strong> Description du produit : </strong> {{ ts.desc}}</p>
+                <br>
+                <p><strong>Prix :</strong>{{ ts.Prix}}</p>
+                <br>
+                <br>
+                <div class="boutons-container">
+                  <button class="bouton-Mod" (click)="onModify(ts._id)">
+                      <strong>Modifier</strong>
+                  </button>
+                  <button class="bouton-Supp"  (click)="onDelete(ts._id)">
+                      <strong>Supprimer</strong>
+                  </button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

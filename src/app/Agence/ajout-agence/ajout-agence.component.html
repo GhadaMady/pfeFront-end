@@ -1,0 +1,157 @@
+<div class="row justify-content-center align-items-center">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} une Agence</strong></h4>
+        <div class="card-body">
+          <form [formGroup]="agenceForm" (ngSubmit)="saveAgency()">
+            <!-- Champ Nom -->
+            <div class="nice-form-group">
+              <label for="nom">Nom <i class="fas fa-heading"></i></label>
+              <br>
+              <input
+                type="text"
+                name="nom"
+                id="nom"
+                formControlName="nom"
+                placeholder="Entrer un nom"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('nom')" class="invalid-feedback">
+                {{ getErrorMessage('nom') }}
+              </div>
+            </div>
+
+            <!-- Champ Gouvernorat -->
+            <div class="nice-form-group">
+              <label for="Gouvernorat">Gouvernorat <i class="fas fa-map-marker-alt"></i></label>
+              <br>
+              <select
+                name="Gouvernorat"
+                id="Gouvernorat"
+                formControlName="Gouvernorat"
+                class="formbold-form-input"
+              >
+                <option value="">Sélectionner un Gouvernorat</option>
+                <option *ngFor="let gov of Gouvernorat" [value]="gov">{{ gov }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('Gouvernorat')" class="invalid-feedback">
+                {{ getErrorMessage('Gouvernorat') }}
+              </div>
+            </div>
+            
+
+            <!-- Champ Adresse -->
+            <div class="nice-form-group">
+              <label for="adresse">Adresse <i class="fas fa-align-left"></i></label>
+              <br>
+              <input
+                type="text"
+                name="adresse"
+                id="adresse"
+                formControlName="adresse"
+                placeholder="Entrer une adresse"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('adresse')" class="invalid-feedback">
+                {{ getErrorMessage('adresse') }}
+              </div>
+            </div>
+
+            <!-- Champ Téléphone -->
+            <div class="nice-form-group">
+              <label for="tel">Téléphone <i class="fas fa-phone-alt"></i></label>
+              <br>
+              <input
+                type="text"
+                name="tel"
+                id="tel"
+                formControlName="tel"
+                placeholder="Entrer un téléphone"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('tel')" class="invalid-feedback">
+                {{ getErrorMessage('tel') }}
+              </div>
+            </div>
+
+            <!-- Champ Portable -->
+            <div class="nice-form-group">
+              <label for="portable">Portable <i class="fas fa-mobile-alt"></i></label>
+              <br>
+              <input
+                type="text"
+                name="portable"
+                id="portable"
+                formControlName="portable"
+                placeholder="Entrer un portable"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('portable')" class="invalid-feedback">
+                {{ getErrorMessage('portable') }}
+              </div>
+            </div>
+
+            <!-- Champ Fax -->
+            <div class="nice-form-group">
+              <label for="fax">Fax <i class="fas fa-fax"></i></label>
+              <br>
+              <input
+                type="text"
+                name="fax"
+                id="fax"
+                formControlName="fax"
+                placeholder="Entrer un fax"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('fax')" class="invalid-feedback">
+                {{ getErrorMessage('fax') }}
+              </div>
+            </div>
+
+            <!-- Champ Latitude -->
+            <div class="nice-form-group">
+              <label for="latitude">L'atitude d'Agence <i class="fas fa-fax"></i></label>
+              <br>
+              <input
+                type="number"
+                name="latitude"
+                id="latitude"
+                formControlName="latitude"
+                placeholder="Entrer la latitude"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('latitude')" class="invalid-feedback">
+                {{ getErrorMessage('latitude') }}
+              </div>
+            </div>
+
+            <!-- Champ Longitude -->
+            <div class="nice-form-group">
+              <label for="longitude">Longitude d'Agence <i class="fas fa-fax"></i></label>
+              <br>
+              <input
+                type="number"
+                name="longitude"
+                id="longitude"
+                formControlName="longitude"
+                placeholder="Entrer la longitude"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('longitude')" class="invalid-feedback">
+                {{ getErrorMessage('longitude') }}
+              </div>
+            </div>
+
+            <!-- Bouton Submit -->
+            <div class="text-center">
+              <button class="btn btn-success" type="submit" [disabled]="agenceForm.invalid">
+                {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

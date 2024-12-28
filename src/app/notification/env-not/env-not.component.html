@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Ajouter Notification</h4>
+        <form class="post-form" (ngSubmit)="onPost()">
+          
+          <!-- Sélection de l'utilisateur -->
+          <div class="formbold-input-group">
+            <label for="utilisateur" class="formbold-form-label">Utilisateur</label>
+            <br />
+            <select class="formbold-form-input" name="utilisateur" required (change)="ChangeUser($event)">
+              <option value="" disabled selected>Selectionner un utilisateur</option>
+              <option *ngFor="let ts of dataSource" [value]="ts.subId + '|' + ts._id">
+                {{ ts.username }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="!postObj.userId">
+              Veuillez sélectionner un utilisateur.
+            </div>
+          </div>
+          
+          <br />
+          
+          <!-- Saisie du titre -->
+          <div class="formbold-input-group">
+            <label for="title" class="formbold-form-label">Titre</label>
+            <br />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="formbold-form-input"
+              placeholder="Entrer un titre"
+              required
+              [(ngModel)]="postObj.title"
+            />
+            <div class="invalid-feedback" *ngIf="!postObj.title">
+              Veuillez entrer un titre.
+            </div>
+          </div>
+
+          <br />
+
+          <!-- Saisie de la description -->
+          <div class="formbold-input-group">
+            <label for="message" class="formbold-form-label">Description</label>
+            <br />
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              class="formbold-form-input"
+              placeholder="Description..."
+              required
+              [(ngModel)]="postObj.message"
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="!postObj.message">
+              Veuillez entrer une description.
+            </div>
+          </div>
+
+          <br />
+
+          <!-- Bouton de soumission -->
+          <button class="btn btn-primary d-flex align-items-center" type="submit">
+            Valider
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

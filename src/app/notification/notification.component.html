@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <br>
+        <h4 class="card-title">Liste des notifications envoyés</h4>
+        <a href="/dashboard/notification/envoyer">
+          <button class="bouton-clignotant">
+            
+            <strong>Envoyer une notification</strong>
+          </button>
+        </a>
+        <br><br><br>
+
+        <div class="roww">
+          <div class="column" *ngFor="let ts of dataSource">
+            <div class="cardd">
+              <div class="icon-wrapper">
+              </div>
+              <br>
+              <p><strong>Titre du notification: </strong>{{ ts?.title }}</p>
+              <br>
+              <p><strong>Message: </strong>{{ ts?.message }}</p>
+              <br>
+              <p><strong>Date d'envoi du notification: </strong>{{ ts?.Date}}</p>
+              <br>
+              <p><strong>Utilisateur Cible: </strong> {{ts.User}} </p>
+             
+              <br>
+
+              <div class="boutons-container">
+               
+                <button class="bouton-Supp" (click)="onDelete(ts._id)">
+                  <strong>Supprimer</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

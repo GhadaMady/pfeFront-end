@@ -1,0 +1,74 @@
+/* CSS pour centrer le formulaire */
+.demo-page {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Pour occuper toute la hauteur de la page */
+}
+  
+.demo-page-content {
+    width: 50%; /* Largeur du contenu du formulaire */
+    max-width: 600px; /* Largeur maximale du formulaire */
+}
+
+.cards {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.nice-form-group {
+    margin-bottom: 15px;
+}
+
+.nice-form-group label {
+    display: block;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.nice-form-group input[type="text"],
+.nice-form-group input[type="email"],
+.nice-form-group input[type="tel"],
+.nice-form-group input[type="url"],
+.nice-form-group input[type="password"],
+.nice-form-group input[type="search"],
+.nice-form-group textarea {
+    width: 100%; /* Remplir la largeur disponible */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.nice-form-group input[type="text"]:disabled {
+    background-color: #f0f0f0;
+}
+
+.nice-form-group input[type="text"]:focus,
+.nice-form-group input[type="email"]:focus,
+.nice-form-group input[type="tel"]:focus,
+.nice-form-group input[type="url"]:focus,
+.nice-form-group input[type="password"]:focus,
+.nice-form-group input[type="search"]:focus,
+.nice-form-group textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+.invalid-feedback {
+    color: red;
+    font-size: 15px;
+  }
+  .is-invalid {
+    border-color: red;
+  }
+
+.btn { 
+    padding: 12px 24px; /* Ajustement de la taille du bouton */
+    font-size: 16px; /* Taille de la police */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s;
+    color: white;
+    background-color: green; /* Couleur de fond bleu */
+}

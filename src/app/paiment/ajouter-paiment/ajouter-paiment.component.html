@@ -1,0 +1,118 @@
+<div class="row justify-content-center align-items-center">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un Paiement</strong></h4>
+          <form [formGroup]="paiementForm" (ngSubmit)="savePaiement()">
+            
+            <div class="nice-form-group">
+              <label for="cardNumber">Numéro de carte <i class="fas fa-credit-card"></i></label>
+              <br>
+              <input
+                type="text"
+                name="cardNumber"
+                id="cardNumber"
+                formControlName="cardNumber"
+                placeholder="Entrer le numéro de carte"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('cardNumber')" class="invalid-feedback">
+                {{ getErrorMessage('cardNumber') }}
+              </div>
+            </div>
+            
+            <div class="nice-form-group">
+              <label for="expiryDate">Date d'expiration (MM/AA) <i class="fas fa-calendar-alt"></i></label>
+              <br>
+              <input
+                type="text"
+                name="expiryDate"
+                id="expiryDate"
+                formControlName="expiryDate"
+                placeholder="MM/AA"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('expiryDate')" class="invalid-feedback">
+                {{ getErrorMessage('expiryDate') }}
+              </div>
+            </div>
+            
+            <div class="nice-form-group">
+              <label for="cvv">CVV <i class="fas fa-lock"></i></label>
+              <br>
+              <input
+                type="text"
+                name="cvv"
+                id="cvv"
+                formControlName="cvv"
+                placeholder="Entrer le CVV"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('cvv')" class="invalid-feedback">
+                {{ getErrorMessage('cvv') }}
+              </div>
+            </div>
+            
+            <div class="nice-form-group">
+              <label for="datePaiement">Date de Paiement <i class="fas fa-calendar-day"></i></label>
+              <br>
+              <input
+                type="date"
+                name="datePaiement"
+                id="datePaiement"
+                formControlName="datePaiement"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('datePaiement')" class="invalid-feedback">
+                {{ getErrorMessage('datePaiement') }}
+              </div>
+            </div>
+            
+            <div class="nice-form-group">
+              <label for="cardHolderName">Nom du titulaire de la carte <i class="fas fa-user"></i></label>
+              <br>
+              <input
+                type="text"
+                name="cardHolderName"
+                id="cardHolderName"
+                formControlName="cardHolderName"
+                placeholder="Nom du titulaire de la carte"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('cardHolderName')" class="invalid-feedback">
+                {{ getErrorMessage('cardHolderName') }}
+              </div>
+            </div>
+            <div>
+                <label for="user">Utilisateur</label>
+                <select id="user" formControlName="user">
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+                </select>
+                <div *ngIf="isFieldInvalid('user')"  class="invalid-feedback"> 
+                  {{ getErrorMessage('user') }}
+                </div>
+              </div>
+              
+              <div>
+                <label for="contrat">Contrat</label>
+                <select id="contrat" formControlName="contrat">
+                  <option *ngFor="let contrat of contrats" [value]="contrat._id">{{ contrat.nameC }}</option>
+                </select>
+                <div *ngIf="isFieldInvalid('contrat')"  class="invalid-feedback">
+                  {{ getErrorMessage('contrat') }}
+                </div>
+                </div>
+            
+            
+            
+            <div class="text-center">
+              <button class="btn btn-success" type="submit" [disabled]="paiementForm.invalid">
+                {{ isEditMode ? 'Modifier' : 'Payer' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

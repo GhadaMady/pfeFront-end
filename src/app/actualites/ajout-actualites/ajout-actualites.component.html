@@ -1,0 +1,81 @@
+<div class="row justify-content-center align-items-center">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} une Actualité</strong></h4>
+
+        <!-- Error Message Banner -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="actualiteForm" (ngSubmit)="saveActualite()">
+            <!-- Titre -->
+            <div class="nice-form-group">
+              <label for="titre">Titre <i class="fas fa-heading"></i></label>
+              <br>
+              <input
+                type="text"
+                name="titre"
+                id="titre"
+                formControlName="titre"
+                placeholder="Entrer un titre"
+                class="formbold-form-input"
+                [attr.aria-invalid]="isFieldInvalid('titre') ? true : null"
+                [attr.aria-describedby]="isFieldInvalid('titre') ? 'titre-error' : null"
+              />
+              <div *ngIf="isFieldInvalid('titre')" id="titre-error" class="invalid-feedback">
+                {{ getErrorMessage('titre') }}
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="nice-form-group">
+              <label for="description">Description <i class="fas fa-align-left"></i></label>
+              <br>
+              <textarea
+                rows="6"
+                name="description"
+                id="description"
+                formControlName="desc"
+                placeholder="Entrer une description"
+                class="formbold-form-input"
+                [attr.aria-invalid]="isFieldInvalid('desc') ? true : null"
+                [attr.aria-describedby]="isFieldInvalid('desc') ? 'desc-error' : null"
+              ></textarea>
+              <div *ngIf="isFieldInvalid('desc')" id="desc-error" class="invalid-feedback">
+                {{ getErrorMessage('desc') }}
+              </div>
+            </div>
+
+            <!-- Date -->
+            <div class="nice-form-group">
+              <label for="date">Date <i class="fas fa-calendar-alt"></i></label>
+              <br>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                formControlName="date"
+                class="formbold-form-input"
+                [attr.aria-invalid]="isFieldInvalid('date') ? true : null"
+                [attr.aria-describedby]="isFieldInvalid('date') ? 'date-error' : null"
+              />
+              <div *ngIf="isFieldInvalid('date')" id="date-error" class="invalid-feedback">
+                {{ getErrorMessage('date') }}
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+              <button class="btn btn-success" type="submit" [disabled]="actualiteForm.invalid">
+                {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

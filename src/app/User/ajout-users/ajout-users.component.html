@@ -1,0 +1,139 @@
+<div class="row justify-content-center align-items-center">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un utilisateur</strong></h4>
+        <div class="card-body">
+          <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+            
+            <!-- Nom -->
+            <div class="nice-form-group">
+              <label for="username">Nom <i class="fas fa-heading"></i></label>
+              <br>
+              <input
+                type="text"
+                id="username"
+                formControlName="username"
+                placeholder="Entrer un nom"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('username')" class="invalid-feedback">
+                {{ getErrorMessage('username') }}
+              </div>
+            </div>
+
+            <!-- Prénom -->
+            <div class="nice-form-group">
+              <label for="userLastname">Prénom <i class="fas fa-align-left"></i></label>
+              <br>
+              <input
+                type="text"
+                id="userLastname"
+                formControlName="userLastname"
+                placeholder="Entrer un prénom"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('userLastname')" class="invalid-feedback">
+                {{ getErrorMessage('userLastname') }}
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="nice-form-group">
+              <label for="email">Email <i class="fas fa-envelope"></i></label>
+              <br>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="Entrer un email"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('email')" class="invalid-feedback">
+                {{ getErrorMessage('email') }}
+              </div>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="nice-form-group">
+              <label for="tel">Téléphone <i class="fas fa-phone"></i></label>
+              <br>
+              <input
+                type="text"
+                id="tel"
+                formControlName="tel"
+                placeholder="Entrer un numéro de téléphone"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('tel')" class="invalid-feedback">
+                {{ getErrorMessage('tel') }}
+              </div>
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="nice-form-group">
+              <label for="password">Mot de passe <i class=""></i></label>
+              <br>
+              <input
+                type="text"
+                id="password"
+                formControlName="password"
+                placeholder="Entrer un mot de passe pour l'utilisateur"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('password')" class="invalid-feedback">
+                {{ getErrorMessage('password') }}
+              </div>
+            </div>
+            
+            <!-- Région -->
+            <div class="nice-form-group">
+              <label for="region">Région <i class="fas fa-map-marker-alt"></i></label>
+              <br>
+              <select
+                id="region"
+                formControlName="region"
+                class="formbold-form-input"
+                [class.is-invalid]="isFieldInvalid('region')"
+              >
+                <option value="">Sélectionner une région</option>
+                <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('region')" class="invalid-feedback">
+                {{ getErrorMessage('region') }}
+              </div>
+            </div>
+
+            <!-- Genre -->
+            <div class="nice-form-group">
+              <label for="genre">Genre <i class="fas fa-venus-mars"></i></label>
+              <br>
+              <select
+                id="genre"
+                formControlName="genre"
+                class="formbold-form-input"
+                [class.is-invalid]="isFieldInvalid('genre')"
+              >
+                <option value="">Sélectionner un genre</option>
+                <option value="Male">Masculin</option>
+                <option value="Female">Féminin</option>
+                <option value="Other">Autre</option>
+              </select>
+              <div *ngIf="isFieldInvalid('genre')" class="invalid-feedback">
+                {{ getErrorMessage('genre') }}
+              </div>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <div class="text-center">
+              <button class="btn btn-success" type="submit">
+                {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

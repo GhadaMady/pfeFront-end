@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <br>
+    
+        <h3 class="card-title">Liste des Inscriptions des utilisateurs</h3>
+
+        <br>
+        <br>
+        <br>
+        <div class="content">
+          <div *ngIf="dataSource.length === 0; else userTable">
+            <p>La liste des demandes d'inscription est vide.</p>
+          </div>
+          <ng-template #userTable>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" width="50px">Photo</th>
+                  <th scope="col" width="50px">Nom</th>
+                  <th scope="col" width="100px">Prénom</th>
+                  <th scope="col" width="290px">Email</th>
+                  <th scope="col">Région</th>
+                  <th scope="col">Genre</th>
+                  <th scope="col">Téléphone</th>
+                  <th scope="col">Etat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of dataSource">
+                  <td data-label="photo">
+                    <img src="assets/user.png" class="tab-img" alt="user">
+                  </td>
+                  <td data-label="Nom">{{user.username}}</td>
+                  <td data-label="Prénom">{{user.userLastname}}</td>
+                  <td data-label="Email">{{user.email}}</td>
+                  <td data-label="Région">{{user.region}}</td>
+                  <td data-label="Genre">{{user.genre}}</td>
+                  <td data-label="Téléphone">{{user.tel}}</td>
+                  <td data-label="Etat" style="position: relative;">
+                    <button type="button" class="btn btn-success" (click)="onPutAccepte(user._id,user.subId)">
+                      Accepter
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="onPutRejet(user._id,user.subId)">
+                      Rejeter
+                    </button>
+                  </td> 
+                </tr>
+              </tbody>
+            </table>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

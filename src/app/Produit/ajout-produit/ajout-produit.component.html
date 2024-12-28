@@ -1,0 +1,67 @@
+<div class="row justify-content-center align-items-center">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un Produit</strong></h4>
+        <form [formGroup]="produitForm" (ngSubmit)="saveProduit()">
+          <!-- Nom -->
+          <div class="nice-form-group">
+            <label for="nom">Nom <i class="fas fa-heading"></i></label>
+            <input
+              type="text"
+              id="nom"
+              formControlName="nom"
+              placeholder="Entrer un nom"
+              class="formbold-form-input"
+              [attr.aria-invalid]="isFieldInvalid('nom') ? true : null"
+              [attr.aria-describedby]="isFieldInvalid('nom') ? 'nom-error' : null"
+            />
+            <div *ngIf="isFieldInvalid('nom')" id="nom-error" class="invalid-feedback">
+              {{ getErrorMessage('nom') }}
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="nice-form-group">
+            <label for="desc">Description <i class="fas fa-align-left"></i></label>
+            <textarea
+              id="desc"
+              formControlName="desc"
+              placeholder="Entrer une description"
+              class="formbold-form-input"
+              [attr.aria-invalid]="isFieldInvalid('desc') ? true : null"
+              [attr.aria-describedby]="isFieldInvalid('desc') ? 'desc-error' : null"
+            ></textarea>
+            <div *ngIf="isFieldInvalid('desc')" id="desc-error" class="invalid-feedback">
+              {{ getErrorMessage('desc') }}
+            </div>
+          </div>
+
+          <!-- Prix -->
+          <div class="nice-form-group">
+            <label for="Prix">Prix <i class="fas fa-dollar-sign"></i></label>
+            <input
+              type="number"
+              id="Prix"
+              formControlName="Prix"
+              placeholder="Entrer le prix"
+              class="formbold-form-input"
+              [attr.aria-invalid]="isFieldInvalid('Prix') ? true : null"
+              [attr.aria-describedby]="isFieldInvalid('Prix') ? 'prix-error' : null"
+            />
+            <div *ngIf="isFieldInvalid('Prix')" id="prix-error" class="invalid-feedback">
+              {{ getErrorMessage('Prix') }}
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button class="btn btn-success" type="submit" [disabled]="produitForm.invalid">
+              {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

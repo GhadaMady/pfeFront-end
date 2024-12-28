@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<br>
+
+<div class="row">
+ <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">List des Réclamations</h4>
+        <a href="/dashboard/reclamations/ajouter">
+          <button class="bouton-clignotant">
+          <strong>Ajouter une Réclamation</strong>  
+          </button>
+        </a>
+		<br>
+		<br>
+		<br>
+
+        <div class="roww">
+          <div class="column" *ngFor="let ts of dataSource">
+            <div class="cardd">
+              <div class="icon-wrapper">
+              </div>
+			  <br>
+              <h2><strong></strong>{{ ts.Titre }}</h2>
+			  <br>
+              <p><strong>message: </strong>{{ ts.message }}</p>
+			  <br>
+              <p><strong>Date: </strong>{{ ts.Date }}</p>
+			  <br>
+              <p><strong>Utilisateur: </strong> {{ts.User?.email}}</p>
+<br>
+<p><strong>Etat Actuelle: </strong>{{ ts.Etat
+              }}    &nbsp; &nbsp;<button *ngIf=" ts.Etat === 'En cours'" type="button" (click)="onPut(ts._id)" class="btn btn-success">
+Probléme résolu                        </button> &nbsp;
+                        <button *ngIf="ts.Etat === 'en attente'" type="button" (click)="onPutC(ts._id)" class="btn btn-danger">
+                            En cours
+                        </button> &nbsp; </p>
+<br>
+
+   
+     
+			  <br>
+
+			  <div class="boutons-container">
+				
+				<button class="bouton-Supp"  (click)="onDelete(ts._id)">
+					<strong>Supprimer</strong>
+				</button>
+			</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="row justify-content-center align-items-center">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4><strong>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un Contrat</strong></h4>
+        <div class="card-body">
+          <form [formGroup]="contratForm" (ngSubmit)="saveContrat()">
+            <!-- Nom du Contrat -->
+            <div class="nice-form-group">
+              <label for="nameC">Nom du Contrat <i class="fas fa-building"></i></label>
+              <input
+                type="text"
+                name="nameC"
+                id="nameC"
+                formControlName="nameC"
+                placeholder="Entrer le nom du contrat"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('nameC')" class="invalid-feedback">
+                {{ getErrorMessage('nameC') }}
+              </div>
+            </div>
+
+            <!-- Date de Début -->
+            <div class="nice-form-group">
+              <label for="dateDebut">Date de début <i class="fas fa-calendar-alt"></i></label>
+              <input
+                type="date"
+                name="dateDebut"
+                id="dateDebut"
+                formControlName="DateDebut"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('DateDebut')" class="invalid-feedback">
+                {{ getErrorMessage('DateDebut') }}
+              </div>
+            </div>
+
+            <!-- Date de Fin -->
+            <div class="nice-form-group">
+              <label for="dateFin">Date de fin <i class="fas fa-calendar-alt"></i></label>
+              <input
+                type="date"
+                name="dateFin"
+                id="dateFin"
+                formControlName="DateFin"
+                class="formbold-form-input"
+              />
+              <div *ngIf="isFieldInvalid('DateFin')" class="invalid-feedback">
+                {{ getErrorMessage('DateFin') }}
+              </div>
+            </div>
+
+            <!-- État du Contrat -->
+            <div class="nice-form-group">
+              <label for="etat">État du contrat <i class="fas fa-info-circle"></i></label>
+              <select
+                name="etat"
+                id="etat"
+                formControlName="Etat"
+                class="formbold-form-input"
+              >
+                <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('Etat')" class="invalid-feedback">
+                {{ getErrorMessage('Etat') }}
+              </div>
+            </div>
+
+            <!-- Utilisateur -->
+            <div class="nice-form-group">
+              <label for="user">Utilisateur <i class="fas fa-user"></i></label>
+              <select
+                name="user"
+                id="user"
+                formControlName="User"
+                class="formbold-form-input"
+              >
+                <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('User')" class="invalid-feedback">
+                {{ getErrorMessage('User') }}
+              </div>
+            </div>
+
+            <!-- Produit -->
+            <div class="nice-form-group">
+              <label for="produit">Produit <i class="fas fa-box"></i></label>
+              <select
+                name="produit"
+                id="produit"
+                formControlName="Produit"
+                class="formbold-form-input"
+              >
+                <option *ngFor="let produit of produits" [value]="produit._id">{{ produit.nom }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('Produit')" class="invalid-feedback">
+                {{ getErrorMessage('Produit') }}
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-success" type="submit" [disabled]="contratForm.invalid">
+                {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

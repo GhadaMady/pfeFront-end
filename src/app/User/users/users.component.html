@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <br><br>
+          <h3 class="card-title">Liste des utilisateurs de l'application DAE_Assurance</h3>
+          <a href="/dashboard/users/ajouter">
+            <button class="bouton-clignotant">
+              <strong>Ajouter un Utilisateur</strong>
+            </button>
+          </a>
+          <div class="content">
+            <br><br>
+            <div *ngIf="dataSource.length === 0; else userTable">
+              <p>la liste des utilisateurs est vide.</p>
+            </div>
+            <ng-template #userTable>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Région</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Téléphone</th>
+<!--                     <th scope="col">Etat</th>
+ -->                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ts of dataSource">
+                    <td data-label="Photo">
+                      <img src="assets/user.png" class="tab-img" alt="user">
+                    </td>
+                    <td data-label="Nom">{{ ts.username }}</td>
+                    <td data-label="Prénom">{{ ts.userLastname }}</td>
+                    <td data-label="Email">{{ ts.email }}</td>
+                    <td data-label="Région">{{ ts.region }}</td>
+                    <td data-label="Genre">{{ ts.genre }}</td>
+                    <td data-label="Téléphone">{{ ts.tel }}</td>
+                   <!--  <td data-label="Etat">
+                      <button *ngIf="!ts.activer" type="button" class="btn btn-danger" (click)="onPut(ts._id)">
+                        Activer
+                      </button>
+                      <button *ngIf="ts.activer" type="button" class="btn btn-success" (click)="onPutD(ts._id)">
+                        Désactiver
+                      </button>
+                    </td> -->
+                    <td data-label="Action">
+                      <button class="bouton-Mod" (click)="onModify(ts._id)">
+                        <strong>Modifier</strong>
+                      </button>
+
+                      <button class="bouton-Supp" (click)="onSoftDelete(ts._id)">
+                        <strong>Supprimer</strong>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <br>
+        <h4 class="card-title">Liste des paiements effectués</h4>
+        <a href="/dashboard/paiments/ajouter">
+          <button class="bouton-clignotant">
+            
+            <strong>Effectuer un paiement</strong>
+          </button>
+        </a>
+        <br><br><br>
+
+        <div class="roww">
+          <div class="column" *ngFor="let ts of dataSource">
+            <div class="cardd">
+              <div class="icon-wrapper">
+              </div>
+              <br>
+              <p><strong>Nom d'Utilisateur: </strong>{{ ts?.user?.email }}</p>
+              <br>
+              <p><strong>Nom du contrat: </strong>{{ ts?.contrat?.nameC }}</p>
+              <br>
+              <p><strong>Nom du produit: </strong>{{ ts?.produitNom }}</p>
+              <br>
+              <p><strong>Nom du titulaire de la carte: </strong>{{ ts.cardHolderName }}</p>
+              <br>
+              <p><strong>Date de paiement: </strong>{{ ts.datePaiement }}</p>
+              <br>
+              <p><strong>Numéro de la carte: </strong>{{ ts.cardNumber }}</p>
+              <br>
+              <p><strong>Prix du contrat: </strong>{{ ts.produitPrix}}</p>
+
+              <br>
+
+              <div class="boutons-container">
+               
+                <button class="bouton-Supp" (click)="onDelete(ts._id)" >Supprimer</button>
+                <button class="bouton-Mod" (click)="onModify(ts._id)">Modifier</button>
+                               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <br> <br>
+                <h3 class="card-title">Liste des contrats</h3>
+                <a href="/dashboard/contrats/ajouter">
+                    <button class="bouton-clignotant">
+                    <strong>Ajouter un contrat</strong>  
+                    </button>
+                  </a>
+                <div class="content">
+                    <br><br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" [width]="175" style="text-align: center;">Nom du contrat</th>
+                                <th scope="col" style="text-align: center;">Date Début</th>
+                                <th scope="col" style="text-align: center;">Date Fin</th>
+                                <th scope="col"[width]="20" style="text-align: center;">Prix</th>
+                                <th scope="col" style="text-align: center;" >Etat </th>
+                                <th scope="col"style="text-align: center;">Produit</th>
+                             <th scope="col" [width]="175" style="text-align: center;"> Utilisateur</th>
+                             
+                                <th scope="col"  style="text-align: center;">Traiter L'état</th>
+                                <th scope="col"[width]="75">Action</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ts of dataSource">
+                                <td data-label="DateDebut" style="text-align: center;">{{ts.nameC}}</td>
+                                <td data-label="DateDebut" style="text-align: center;">{{ts.DateDebut}}</td>
+                                <td data-label="DateFin" style="text-align: center;">{{ts.DateFin}}</td>
+                                <td data-label="prix" style="text-align: center;">{{ts.Produit.Prix}}</td>
+                                <td data-label="Etat" style="text-align: center;">{{ts.Etat}}  </td>
+                                <td data-label="Produit" style="text-align: center;">{{ts.Produit.nom}}</td>
+                                <td data-label="user" style="text-align: center;">{{ts.User.email}}</td> 
+
+                            
+                                <td data-label="Etat" style="position: relative;">
+                                  
+                                    <button *ngIf="ts.Etat === 'Réglement' || ts.Etat === 'En cours' " type="button" (click)="onPutRef(ts._id)" class="btn btn-danger">
+                                       Reffuser
+                                    </button> &nbsp; <br> 
+
+                                    <button *ngIf="ts.Etat === 'En attente' " (click)="onPutC(ts._id)" class="btn btn-danger">
+                                        En cours
+                                     </button> &nbsp; 
+                                    <button *ngIf="ts.Etat === 'En cours'" type="button" (click)="onPutR(ts._id)" class="btn btn-dangr">
+                                        Réglement
+                                    </button> &nbsp;  <br>
+                                    <button *ngIf="ts.Etat === 'Réglement' || ts.Etat === 'En cours'" type="button" (click)="onPut(ts._id)" class="btn btn-success">
+                                         Valider
+                                    </button>
+                                </td>
+     <td>                             
+                    <button type="button" (click)="onDelete(ts._id)" class="btn btn-danger">Supprimer</button>
+                    <button class="bouton-Mod" (click)="onModify(ts._id)" class="btn btn-success">Modifier</button>
+                     
+                    </td>
+                 
+                </tr>
+                            
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
